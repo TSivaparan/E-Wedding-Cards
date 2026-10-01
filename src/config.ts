@@ -96,7 +96,7 @@ export const invite = {
   },
 
   // WhatsApp number in international format, digits only.
-  rsvpWhatsApp: "94770330825",
+  rsvpWhatsApp: "94766394336",
 
   // Write your own WhatsApp message here. \n = new line.
 rsvpMessage: (guest: string | null) =>
