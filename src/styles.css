@@ -478,7 +478,7 @@ padding-top: 8px;
   margin: 0 auto;
   max-width: 340px;
 }
-.scratch {
+/* .scratch {
   position: relative;
   aspect-ratio: 1 / 1.08;
   border-radius: 16px;
@@ -507,8 +507,8 @@ padding-top: 8px;
   font-size: 1.55rem;
   font-weight: 600;
   color: var(--plum);
-}
-.scratch-canvas {
+} */
+/* .scratch-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -519,6 +519,64 @@ padding-top: 8px;
 }
 .scratch-canvas.is-done {
   opacity: 0;
+  pointer-events: none;
+} */
+
+.scratch {
+  position: relative;
+  aspect-ratio: 1 / 1.08;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: var(--card);
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 8px 18px rgba(79, 58, 102, 0.14);
+}
+.scratch-under {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.scratch-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+.scratch-value {
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--plum);
+}
+.scratch-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #c9b3df, #b79fd3, #c6afdd);
+  color: #fff;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.scratch-cover .scratch-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+.scratch-tap {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.scratch.is-done .scratch-cover {
+  opacity: 0;
+  transform: scale(1.15);
   pointer-events: none;
 }
 .tagline {
