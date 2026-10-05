@@ -1,14 +1,26 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { invite } from "../config";
 import { useCountdown } from "../hooks/useCountdown";
-import ScratchCard from "./ScratchCard";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+function DateCard({ label, value, delay }: { label: string; value: string; delay: number }) {
+  return (
+    <motion.div
+      className="scratch"
+      initial={{ rotateY: 90, opacity: 0 }}
+      whileInView={{ rotateY: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+    >
+      <span className="scratch-label">{label}</span>
+      <span className="scratch-value">{value}</span>
+    </motion.div>
+  );
+}
+
 export default function SaveTheDate() {
   const { days, hours, mins, secs } = useCountdown(invite.weddingDateTime);
-  const [revealed, setRevealed] = useState(0);
 
   return (
     <section className="section date" aria-labelledby="std">
@@ -22,18 +34,15 @@ export default function SaveTheDate() {
         <h2 id="std" className="script h-script">
           Save the Date
         </h2>
-        <p className="lede">
-          {revealed === 3 ? "Our wedding date, with love." : "Scratch below to reveal our wedding date"}
-        </p>
+        <p className="lede">Our wedding date, with love.</p>
 
         <div className="scratch-row">
-          <ScratchCard label="Month" value={invite.scratch.month} onReveal={() => setRevealed((r) => r + 1)} />
-          <ScratchCard label="Day" value={invite.scratch.day} onReveal={() => setRevealed((r) => r + 1)} />
-          <ScratchCard label="Year" value={invite.scratch.year} onReveal={() => setRevealed((r) => r + 1)} />
+          <DateCard label="" value={invite.scratch.month} delay={0} />
+          <DateCard label="" value={invite.scratch.day} delay={0.15} />
+          <DateCard label="" value={invite.scratch.year} delay={0.3} />
         </div>
 
         <p className="tagline">{invite.tagline}</p>
-        {/* <p className="dateline">{invite.dateLine}</p> */}
 
         <div className="countdown" role="timer" aria-label="Time until the wedding">
           <div>
