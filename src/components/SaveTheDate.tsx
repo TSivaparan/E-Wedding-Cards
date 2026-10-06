@@ -7,14 +7,25 @@ const pad = (n: number) => String(n).padStart(2, "0");
 function DateCard({ label, value, delay }: { label: string; value: string; delay: number }) {
   return (
     <motion.div
-      className="scratch"
-      initial={{ rotateY: 90, opacity: 0 }}
-      whileInView={{ rotateY: 0, opacity: 1 }}
+      className="scratch-flip"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      transition={{ duration: 0.5, delay }}
     >
-      <span className="scratch-label">{label}</span>
-      <span className="scratch-value">{value}</span>
+      <motion.div
+        className="scratch-inner"
+        initial={{ rotateY: 180 }}
+        whileInView={{ rotateY: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.9, delay: delay + 0.15, ease: "easeInOut" }}
+      >
+        <div className="scratch-face scratch-front">
+          <span className="scratch-label">{label}</span>
+          <span className="scratch-value">{value}</span>
+        </div>
+        <div className="scratch-face scratch-back" />
+      </motion.div>
     </motion.div>
   );
 }

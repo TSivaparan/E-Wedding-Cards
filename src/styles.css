@@ -588,6 +588,48 @@ padding-top: 8px;
   transform: scale(1.15);
   pointer-events: none;
 }
+.scratch-flip {
+  aspect-ratio: 1 / 1.08;
+  perspective: 900px;
+}
+.scratch-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.scratch-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 16px;
+  backface-visibility: hidden;
+}
+.scratch-front {
+  background: linear-gradient(160deg, #9c3344, var(--maroon) 60%, #7a2531);
+  box-shadow:
+    0 0 0 1px rgba(142, 43, 58, 0.35),
+    0 10px 20px rgba(142, 43, 58, 0.3);
+}
+.scratch-front .scratch-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.66rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+.scratch-front .scratch-value {
+  color: #fff;
+  font-size: 1.55rem;
+  font-weight: 600;
+}
+.scratch-back {
+  background: linear-gradient(160deg, #7a2531, #5c1b24);
+  transform: rotateY(180deg);
+}
 .tagline {
   max-width: 30ch;
   margin: 30px auto 4px;
